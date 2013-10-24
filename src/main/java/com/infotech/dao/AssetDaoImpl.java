@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.infotech.hibernatePojo.AssetDetails;
+import com.infotech.hibernatePojo.AssetType;
+import com.infotech.hibernatePojo.Location;
 import com.infotech.hibernatePojo.User;
 @Repository
 public class AssetDaoImpl implements AssetDao {
@@ -64,6 +66,31 @@ public class AssetDaoImpl implements AssetDao {
 			queryString += " where assetDetails_type_id = (select asset_type_id from AssetType where asset_type_name = '"+"Desktop')";
 		}
 		return sessionFactory.getCurrentSession().createQuery(queryString).list();
+	}
+
+	@Override
+	public void addLocaton(Location location) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(location);
+		
+	}
+
+	@Override
+	public List<Location> getLocations() {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("from Location").list();
+	}
+
+	@Override
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("from User").list();
+	}
+
+	@Override
+	public List<AssetType> getAssetTypes() {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("from AsseType").list();
 	}
 
 }

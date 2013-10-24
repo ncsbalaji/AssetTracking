@@ -13,7 +13,9 @@
 <%@include file = "./header.jsp" %>
 <br><br><br><br><br><br>
 <div id="asset list table" align="center" >
-
+<font color="aa0000">
+	The following are <b>${assetType}</b> assets available
+	</font>
 <table align="center">
 	<thead>
 		<tr>

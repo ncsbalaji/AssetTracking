@@ -23,8 +23,8 @@
 				<li><a class="fly" href="#" tabindex="1">Add</a>
 				 <ul>
 				 	<li><a href="#">Add user</a></li>
-				 	<li><a href="#">Add Asset</a></li>
-				 	<li><a href="#">Add Location</a></li>
+				 	<li><a href="${ pageContext.servletContext.contextPath }/asset/addAsset.do">Add Asset</a></li>
+				 	<li><a href="${ pageContext.servletContext.contextPath }/asset/addLocation.do">Add Location</a></li>
 				 </ul>
 				 </li>
 				<li><a class="fly" href="#" tabindex="1">Delete</a>

@@ -14,9 +14,9 @@
 	<u>Telecom-OSS Asset Tracking: <b>Select Asset Type</b></u>
 	</font>
 	<br>
-	<a href="${pageContext.servletContext.contextPath }/assetSelection.do/type/laptop">Laptop</a>
-	<a href="${pageContext.servletContext.contextPath }/assetSelection.do/type/desktop">Desktop</a>
-	<a href="${pageContext.servletContext.contextPath }/assetSelection.do/type/All">All</a>
+	<a href="${pageContext.servletContext.contextPath }/assetSelection.do/type/laptop">Laptop</a><br>
+	<a href="${pageContext.servletContext.contextPath }/assetSelection.do/type/desktop">Desktop</a><br>
+	<a href="${pageContext.servletContext.contextPath }/assetSelection.do/type/All">All</a><br>
 </div>
 <%@include file = "./footer.jsp" %>
 </body>

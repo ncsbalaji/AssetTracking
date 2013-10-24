@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.infotech.dao.AssetDao;
 import com.infotech.hibernatePojo.AssetDetails;
+import com.infotech.hibernatePojo.AssetType;
+import com.infotech.hibernatePojo.Location;
 import com.infotech.hibernatePojo.User;
 @Service
 public class AssetServiceImpl implements AssetService {
@@ -52,6 +54,35 @@ public class AssetServiceImpl implements AssetService {
 	public List<AssetDetails> getAllAssetDetails(String AssetType) {
 		// TODO Auto-generated method stub
 		return assetDao.getAllAssetDetails(AssetType);
+	}
+
+	@Override
+	@Transactional
+	public void addLocaton(Location location) {
+		// TODO Auto-generated method stub
+		assetDao.addLocaton(location);
+		
+	}
+
+	@Override
+	@Transactional
+	public List<Location> getLocations() {
+		// TODO Auto-generated method stub
+		return assetDao.getLocations();
+	}
+
+	@Override
+	@Transactional
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return assetDao.getUsers();
+	}
+
+	@Override
+	@Transactional
+	public List<AssetType> getAssetTypes() {
+		// TODO Auto-generated method stub
+		return assetDao.getAssetTypes();
 	}
 
 }
