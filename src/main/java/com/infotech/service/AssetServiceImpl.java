@@ -10,6 +10,7 @@ import com.infotech.dao.AssetDao;
 import com.infotech.hibernatePojo.AssetDetails;
 import com.infotech.hibernatePojo.AssetType;
 import com.infotech.hibernatePojo.Location;
+import com.infotech.hibernatePojo.Role;
 import com.infotech.hibernatePojo.User;
 @Service
 public class AssetServiceImpl implements AssetService {
@@ -83,6 +84,33 @@ public class AssetServiceImpl implements AssetService {
 	public List<AssetType> getAssetTypes() {
 		// TODO Auto-generated method stub
 		return assetDao.getAssetTypes();
+	}
+
+	@Override
+	@Transactional
+	public List<Role> getRoles() {
+		// TODO Auto-generated method stub
+		return assetDao.getRoles();
+	}
+
+	@Override
+	@Transactional
+	public void addAssetDetails(AssetDetails assetDetails) {
+		// TODO Auto-generated method stub
+		assetDao.addAssetDetails(assetDetails);
+	}
+
+	@Override
+	@Transactional
+	public AssetDetails getAssetDetails(Integer asset_details_id) {
+		// TODO Auto-generated method stub
+		return assetDao.getAssetDetails(asset_details_id);
+	}
+
+	@Override
+	public String getStatistics() {
+		// TODO Auto-generated method stub
+		return assetDao.getStatistics();
 	}
 
 }

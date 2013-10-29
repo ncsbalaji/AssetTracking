@@ -8,22 +8,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/css/tableStyle1.css" type="text/css" />
-<title> Add New Asset</title>
+<title> Modify Asset</title>
 </head>
 <body>
 <%@include file = "./header.jsp" %>
 <br><br><br><br><br><br>
-<div id="add asset" align="center">
+
+<div id="add location" align="center">
 	
 	<br>
-	<form:form method="post" commandName="asset" action="${ pageContext.request.contextPath }/asset/addAsset/process.html">
+	<form:form method="post" commandName="assetDetails" action="${ pageContext.request.contextPath }/asset/edit/${ assetDetails.getAsset_details_id() }">
 	<table align="center">
 		<tbody>
 		<tr>
 			<td colspan="2" align="center">
 				<font color="aa0000">
-					<u>Telecom-OSS Asset Tracking: <b>Add Asset</b></u>
+					<u>Telecom-OSS Asset Tracking: <b>Update Asset</b></u>
 				</font>
 			</td>
 		</tr>
@@ -90,10 +90,13 @@
 		</tbody>
 	</table>
 	</form:form>
+</div>
+
 	<p align="center">
 		<a href="${ pageContext.request.contextPath }/index">home</a>
 	</p>
-</div>
+
+
 <%@include file = "./footer.jsp" %>
 </body>
 </html>

@@ -15,36 +15,40 @@
 	
 		<li><a href="/">Home</a></li>
 		<li>
-			<a href="/about/">About</a>
-		</li>
-		<li>
-			<a class="fly" href="#" tabindex="1">Operations</a>
+			<a class="fly" href="#" tabindex="1">USER</a>
 			<ul class="dd">
-				<li><a class="fly" href="#" tabindex="1">Add</a>
-				 <ul>
-				 	<li><a href="#">Add user</a></li>
-				 	<li><a href="${ pageContext.servletContext.contextPath }/asset/addAsset.do">Add Asset</a></li>
-				 	<li><a href="${ pageContext.servletContext.contextPath }/asset/addLocation.do">Add Location</a></li>
-				 </ul>
-				 </li>
-				<li><a class="fly" href="#" tabindex="1">Delete</a>
-				 <ul>
-				 	<li><a href="#">Delete User</a></li>
-				 </ul>
-				</li>
-				<li><a class="fly" href="#" tabindex="1">Assign</a>
-				  <ul>
-				    <li><a href="#">Assign Asset</a></li>
-				  </ul>
-				</li>
-				<li><a class="fly" href="#" tabindex="1">Assets</a>
-				  <ul>
-				    <li><a href="#">Unassigned Assets</a></li>
-				  </ul>
-				</li>
+				<li><a href="${ pageContext.servletContext.contextPath }/asset/addUser">Add User</a></li>
+				<li><a href="#">Update User</a></li>
+				<li><a href="#">Delete User</a></li>
+				<li><a href="#">List of Users</a></li>
+				<li><a href="#">Change Password</a></li>
 			</ul>
 		</li>
-		<li><a href="/changePassword/">Change Password</a></li>
+		<li>
+			<a class="fly" href="#" tabindex="1">ASSET</a>
+			<ul class="dd">
+				<li><a href="${ pageContext.servletContext.contextPath }/asset/addAsset.do">Add Asset</a></li>
+				<li><a href="#">Update Asset</a></li>
+				<li><a href="#">Delete Asset</a></li>
+				<li><a href="#">Assign Assets</a></li>
+				<li><a class="fly" href="#" tabindex="1">Display Assets</a>
+					<ul>
+						<li><a href="#">All</a></li>
+						<li><a href="#">Desktop</a></li>
+						<li><a href="#">Laptop</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Asset Status</a></li>
+			</ul>
+		</li>
+		<li>
+			<a class="fly" href="#" tabindex="1">LOCATION</a>
+			<ul class="dd">
+				<li><a href="${ pageContext.servletContext.contextPath }/asset/addLocation.do">Add Location</a></li>
+				<li><a href="#">Delete Location</a></li>
+				<li><a href="#">Display Location</a></li>
+			</ul>
+		</li>
 		<li><a href="/logout/">Logout</a></li>		
 	</ul>
 </div>

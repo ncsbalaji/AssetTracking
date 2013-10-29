@@ -2,6 +2,7 @@ package com.infotech.hibernatePojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,7 +19,7 @@ public class AssetDetails {
 	private long asset_details_id;
 	
 	@Column( name = "asset_user_id")
-	private long associtate_id;
+	private long associate_id;
 	
 	@Column( name = "asset_location_id")
 	private long location_id;
@@ -64,7 +65,7 @@ public class AssetDetails {
 	}
 	
 	public AssetDetails(long associate_id, long location_id, long assetDetails_type_id, String ip_address, String comp_name, String model, String track_number, String monitor_number, String ram, String hardDrive){
-		this.associtate_id = associate_id;
+		this.associate_id = associate_id;
 		this.location_id = location_id;
 		this.assetDetails_type_id = assetDetails_type_id;
 		this.ip_address = ip_address;
@@ -76,12 +77,12 @@ public class AssetDetails {
 		this.comp_name = comp_name;
 	}
 
-	public long getAssocitate_id() {
-		return associtate_id;
+	public long getAssociate_id() {
+		return associate_id;
 	}
 
-	public void setAssocitate_id(long associtate_id) {
-		this.associtate_id = associtate_id;
+	public void setAssociate_id(long associtate_id) {
+		this.associate_id = associtate_id;
 	}
 
 	public long getLocation_id() {
@@ -180,12 +181,12 @@ public class AssetDetails {
 		this.location = location;
 	}
 
-	public long getAsset_type_id() {
+	public long getAssetDetails_type_id() {
 		return assetDetails_type_id;
 	}
 
-	public void setAsset_type_id(long asset_type_id) {
-		this.assetDetails_type_id = asset_type_id;
+	public void setAssetDetails_type_id(long assetDetails_type_id) {
+		this.assetDetails_type_id = assetDetails_type_id;
 	}
 	
 	

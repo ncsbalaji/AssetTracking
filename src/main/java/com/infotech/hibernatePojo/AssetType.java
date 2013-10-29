@@ -35,10 +35,10 @@ public class AssetType {
 		this.asset_type_name = asset_type_name;
 	}
 	
-	public long getAsset_id() {
+	public long getAsset_type_id() {
 		return asset_type_id;
 	}
-	public void setAsset_id(long asset_type_id) {
+	public void setAsset_type_id(long asset_type_id) {
 		this.asset_type_id = asset_type_id;
 	}
 	public String getAsset_name() {

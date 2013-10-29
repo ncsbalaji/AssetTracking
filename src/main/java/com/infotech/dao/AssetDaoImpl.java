@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.infotech.hibernatePojo.AssetDetails;
 import com.infotech.hibernatePojo.AssetType;
 import com.infotech.hibernatePojo.Location;
+import com.infotech.hibernatePojo.Role;
 import com.infotech.hibernatePojo.User;
 @Repository
 public class AssetDaoImpl implements AssetDao {
@@ -49,9 +50,9 @@ public class AssetDaoImpl implements AssetDao {
 		// TODO Auto-generated method stub
 		AssetDetails assetDetailsUpdate =new AssetDetails();
 		assetDetailsUpdate.setAsset_details_id(assetDetails.getAsset_details_id());
-		assetDetailsUpdate.setAsset_type_id(assetDetails.getAsset_type_id());
+		assetDetailsUpdate.setAssetDetails_type_id(assetDetails.getAssetDetails_type_id());
 		assetDetailsUpdate.setAssetType(assetDetails.getAssetType());
-		assetDetailsUpdate.setAssocitate_id(assetDetails.getAssocitate_id());
+		assetDetailsUpdate.setAssociate_id(assetDetails.getAssociate_id());
 		sessionFactory.getCurrentSession().update(assetDetailsUpdate);
 	}
 
@@ -90,7 +91,31 @@ public class AssetDaoImpl implements AssetDao {
 	@Override
 	public List<AssetType> getAssetTypes() {
 		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession().createQuery("from AsseType").list();
+		return sessionFactory.getCurrentSession().createQuery("from AssetType").list();
+	}
+
+	@Override
+	public List<Role> getRoles() {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("from Role").list();
+	}
+
+	@Override
+	public void addAssetDetails(AssetDetails assetDetails) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(assetDetails);
+		
+	}
+
+	@Override
+	public AssetDetails getAssetDetails(Integer asset_details_id) {
+		// TODO Auto-generated method stub
+		return (AssetDetails)sessionFactory.getCurrentSession().load(AssetDetails.class, asset_details_id.longValue());
+	}
+	
+	@Override
+	public String getStatistics(){
+		return sessionFactory.getStatistics().getSessionOpenCount()+" --open sessions "+sessionFactory.getStatistics().getSessionCloseCount()+"--close sessions";
 	}
 
 }

@@ -60,9 +60,18 @@
 				<prop key="hibernate.dialect" >org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="Environment.GENERATE_STATISTICS">true</prop>
 			</props>
 		</property>
 	  </bean>
+	  
+     <mvc:interceptors>
+    	<bean class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+        	<property name="sessionFactory">
+            	<ref local="sessionFactory" />
+        	</property>
+    	</bean>
+	</mvc:interceptors>
 	
 	<tx:annotation-driven/>
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
