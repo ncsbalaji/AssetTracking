@@ -33,13 +33,12 @@ public class AssetDaoImpl implements AssetDao {
 		if(user != null){
 			sessionFactory.getCurrentSession().delete(user);
 		}
-
 	}
 
 	@Override
 	public void removeAsset(Integer assetId) {
 		// TODO Auto-generated method stub
-		AssetDetails assetDetails = (AssetDetails)sessionFactory.getCurrentSession().load(AssetDetails.class, assetId);
+		AssetDetails assetDetails = (AssetDetails)sessionFactory.getCurrentSession().load(AssetDetails.class, assetId.longValue());
 		if(assetDetails != null){
 			sessionFactory.getCurrentSession().delete(assetDetails);
 		}
@@ -48,12 +47,11 @@ public class AssetDaoImpl implements AssetDao {
 	@Override
 	public void updateAsset(AssetDetails assetDetails) {
 		// TODO Auto-generated method stub
-		AssetDetails assetDetailsUpdate =new AssetDetails();
+		AssetDetails assetDetailsUpdate = new AssetDetails(assetDetails.getAssociate_id(), assetDetails.getLocation_id(), 
+				assetDetails.getAssetDetails_type_id(), assetDetails.getIp_address(), assetDetails.getComp_name(), assetDetails.getModel(),
+				assetDetails.getTrack_number(), assetDetails.getMonitor_number(), assetDetails.getRam(), assetDetails.getHardDrive());
 		assetDetailsUpdate.setAsset_details_id(assetDetails.getAsset_details_id());
-		assetDetailsUpdate.setAssetDetails_type_id(assetDetails.getAssetDetails_type_id());
-		assetDetailsUpdate.setAssetType(assetDetails.getAssetType());
-		assetDetailsUpdate.setAssociate_id(assetDetails.getAssociate_id());
-		sessionFactory.getCurrentSession().update(assetDetailsUpdate);
+		sessionFactory.getCurrentSession().update(assetDetailsUpdate);		
 	}
 
 	@Override
@@ -103,8 +101,9 @@ public class AssetDaoImpl implements AssetDao {
 	@Override
 	public void addAssetDetails(AssetDetails assetDetails) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().save(assetDetails);
-		
+		sessionFactory.getCurrentSession().save(assetDetails);	
+		sessionFactory.getCurrentSession().flush();
+		sessionFactory.getCurrentSession().clear();
 	}
 
 	@Override

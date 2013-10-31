@@ -44,8 +44,8 @@
 					</c:forEach>
 				</form:select>
 			</td>
-		</tr>	
-		<tr>	
+		</tr>
+		<tr>
 			<td>Location:</td>
 			<td><form:select path="location_id">
 					<c:forEach items="${ locationList }" var="location">

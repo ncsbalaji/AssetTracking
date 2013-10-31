@@ -55,7 +55,7 @@
 					<a href="${ pageContext.request.contextPath }/asset/edit/${asset.getAsset_details_id()}">Edit</a><br>
 				</td>
 				<td>
-					<a href="${ pageContext.request.contextPath }/asset/delete/${asset.getAsset_details_id()}">Delete</a><br>
+					<a href="${ pageContext.request.contextPath }/asset/delete/${asset.getAsset_details_id()}/${assetType}">Delete</a><br>
 				</td>
 			</tr>
 		</c:forEach>

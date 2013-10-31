@@ -5,7 +5,7 @@
   <artifactId>AssetTracking</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>SpringHibernate Maven Webapp</name>
+  <name>AssetTracking Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
   <properties>
@@ -115,8 +115,14 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
-  		</dependency>
-  
+ 		</dependency>
+ 		<!--  
+		<dependency>
+ 			<groupId>javax.servlet</groupId>
+  			<artifactId>servlet-api</artifactId>
+ 			<version>2.5</version>
+  			<scope>provided</scope>
+		</dependency>-->	
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-jcl</artifactId>
@@ -200,6 +206,6 @@
             		
 		</plugins>
 		
-    <finalName>SpringHibernate</finalName>
+    <finalName>AssetTracking</finalName>
   </build>
 </project>

@@ -1,17 +1,14 @@
 package com.infotech.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.infotech.hibernatePojo.AssetDetails;
@@ -38,38 +35,17 @@ public class AssetController {
 		ModelAndView modelAndView = new ModelAndView("displayAssets");
 		modelAndView.addObject("assetType", type);
 		modelAndView.addObject("assetList", assetList);
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 	
-	/*@RequestMapping(value="/asset/edit/{id}", method = RequestMethod.GET)
-	public ModelAndView editAssetPage(@PathVariable Integer id, @ModelAttribute List<AssetDetails> assetList){
-		System.out.println("****"+ assetList.size());
-		AssetDetails assetDetails = new AssetDetails();
-		Iterator<AssetDetails> assetListIterator = assetList.listIterator();
-		while(assetListIterator.hasNext()){
-			System.out.println("***"+assetListIterator.next().getComp_name());
-		}
-		ModelMap modelMap = new ModelMap();
-		modelMap.addAttribute("locationList", assetService.getLocations());
-		modelMap.addAttribute("userList",assetService.getUsers());
-		modelMap.addAttribute("typeList",assetService.getAssetTypes());
-		
-		modelMap.addAttribute("assetDetails", assetDetails);
-		
-		ModelAndView modelAndView = new ModelAndView("editAsset");
-		modelAndView.addAllObjects(modelMap);
-		return modelAndView;
-	}*/
 	@RequestMapping(value="/asset/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView editAssetPage(@PathVariable Integer id){
+		
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute("locationList", assetService.getLocations());
-		System.out.println("in edit asset page controller");
 		modelMap.addAttribute("userList",assetService.getUsers());
 		modelMap.addAttribute("typeList",assetService.getAssetTypes());
-		/*AssetDetails assetDetails = new AssetDetails(); 
-		assetDetails = assetService.getAssetDetails(id);
-		System.out.println(assetDetails.getComp_name()+"****________*********** "+ assetDetails.getAsset_details_id());*/
 		modelMap.addAttribute("assetDetails", assetService.getAssetDetails(id));
 		
 		ModelAndView modelAndView = new ModelAndView("editAsset");
@@ -79,21 +55,28 @@ public class AssetController {
 	}
 	
 	@RequestMapping(value="/asset/edit/{id}", method = RequestMethod.POST)
-	public ModelAndView editAsset(){
-		return new ModelAndView();
+	public ModelAndView editAsset(@ModelAttribute AssetDetails assetDetails, @PathVariable Integer id){
+		/*AssetDetails assetDetailsUpdate = new AssetDetails(assetDetails.getAssociate_id(), assetDetails.getLocation_id(), 
+				assetDetails.getAssetDetails_type_id(), assetDetails.getIp_address(), assetDetails.getComp_name(), assetDetails.getModel(),
+				assetDetails.getTrack_number(), assetDetails.getMonitor_number(), assetDetails.getRam(), assetDetails.getHardDrive());
+		assetDetailsUpdate.setAsset_details_id(assetDetails.getAsset_details_id());
+		assetService.updateAsset(assetDetailsUpdate);*/
+		assetDetails.setAsset_details_id(id.longValue());
+		assetService.updateAsset(assetDetails);
+		System.out.println("**session statistics***"+assetService.getStatistics());
+		return new ModelAndView("assetSelection");
 	}
 	
 	@RequestMapping(value="/asset/addAsset", method = RequestMethod.GET)
 	public ModelAndView addAssetPage(){
 		ModelAndView modelAndView = new ModelAndView("addAsset");
 		ModelMap modelMap = new ModelMap();
-		/*AssetDetails assetDetails = new AssetDetails();
-		modelMap.addAttribute("assetDetails", assetDetails);*/
 		modelMap.addAttribute("locationList", assetService.getLocations());
 		modelMap.addAttribute("userList",assetService.getUsers());
 		modelMap.addAttribute("typeList",assetService.getAssetTypes());
 		modelMap.addAttribute("asset",new AssetDetails());
 		modelAndView.addAllObjects(modelMap);
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 	
@@ -104,6 +87,18 @@ public class AssetController {
 				 asset.getMonitor_number(), asset.getRam(), asset.getHardDrive());
 		assetService.addAssetDetails(assetDetails);
 		ModelAndView modelAndView = new ModelAndView("assetSelection");
+		System.out.println("**session statistics***"+assetService.getStatistics());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/asset/delete/{id}/{type}")
+	public ModelAndView removeAsset(@PathVariable Integer id, @PathVariable String type){
+		assetService.removeAsset(id);		
+		List<AssetDetails> assetList = assetService.getAllAssetDetails(type);
+		ModelAndView modelAndView = new ModelAndView("displayAssets");
+		modelAndView.addObject("assetType", type);
+		modelAndView.addObject("assetList", assetList);
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 	
@@ -111,6 +106,7 @@ public class AssetController {
 	public ModelAndView addLocationPage(){
 		ModelAndView modelAndView = new ModelAndView("addLocation");
 		modelAndView.addObject("locationPojo",new LocationFormPojo());
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 	
@@ -122,6 +118,7 @@ public class AssetController {
 		modelMap.addAttribute("user", new User());
 		modelMap.addAttribute("roleList", roleList);
 		modelAndView.addAllObjects(modelMap);
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 	
@@ -131,12 +128,14 @@ public class AssetController {
 				user.getPassword(), user.getEmail(),user.getRole_id(),user.getVertical_name());
 		assetService.addUser(addUser);
 		ModelAndView modelAndView = new ModelAndView("assetSelection");
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 	
 	@RequestMapping(params="cancel=true")
 	public ModelAndView cancelPage(){
 		ModelAndView modelAndView = new ModelAndView("index");
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 	
@@ -147,6 +146,7 @@ public class AssetController {
 		
 		assetService.addLocaton(location);
 		ModelAndView modelAndView = new ModelAndView("assetSelection");
+		System.out.println("**session statistics***"+assetService.getStatistics());
 		return modelAndView;
 	}
 
